@@ -6,7 +6,20 @@
         xmlns:local="clr-namespace:NPCManager"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-
-    </Grid>
+    <DockPanel x:Name="MainDP" Margin="5,5,5,5" LastChildFill="False">
+        
+        <Grid DockPanel.Dock="Top" x:Name="NPCGrid">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+        </Grid>
+        
+        <WrapPanel DockPanel.Dock="Bottom" x:Name="ButtonWP" Height="50" VerticalAlignment="Stretch">
+            <Button>Test</Button>
+            <Button>Test2</Button>
+            
+        </WrapPanel>
+        
+    </DockPanel>
 </Window>
