@@ -18,7 +18,7 @@ namespace NPCManager
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public class Generator
+    public class NPC
     {
 
     }
@@ -28,6 +28,16 @@ namespace NPCManager
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void NPCAdd(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void NPCDelete(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
