@@ -20,7 +20,18 @@ namespace NPCManager
     /// </summary>
     public class NPC
     {
+        /// <summary>
+        /// Every NPC needs a name, some stats, a profession and a description.
+        /// </summary>
+        string name;
+        int[] stats;
+        string profession;
+        string description;
 
+        public NPC(string n)
+        {
+            name = n;
+        }
     }
 
     public partial class MainWindow : Window
@@ -32,12 +43,15 @@ namespace NPCManager
 
         private void NPCAdd(object sender, RoutedEventArgs e)
         {
-
+            npcNames.Items.Add("Test Test");
         }
 
         private void NPCDelete(object sender, RoutedEventArgs e)
         {
-
+            if (npcNames.SelectedItem != null)
+            {
+                npcNames.Items.RemoveAt(npcNames.Items.IndexOf(npcNames.SelectedItem));                
+            }            
         }
     }
 }
