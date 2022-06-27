@@ -31,7 +31,13 @@ namespace NPCManager
         public NPC(string n)
         {
             name = n;
+            Random rnd = new Random();
+            for (int i=0; i<6; i++)
+            {
+                stats[i]=rnd.Next(1, 6)+ rnd.Next(1, 6)+ rnd.Next(1, 6);
+            }
         }
+        
     }
 
     public partial class MainWindow : Window
