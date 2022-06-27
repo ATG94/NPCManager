@@ -48,22 +48,24 @@ namespace NPCManager
 
         private void NPCDelete(object sender, RoutedEventArgs e)
         {
-            
-            MessageBoxResult result = MessageBox.Show("Deleting this NPC is irreversible. Do you wish to continue?","Confirm NPC Removal.",MessageBoxButton.OKCancel);
-            switch (result)
+            if (npcNames.Items.Count > 0 && npcNames.SelectedItem != null)
             {
-                case MessageBoxResult.OK:
-                    if (npcNames.Items.Count == 1)
-                    {
-                        npcNames.Items.Clear();
-                    }
-                    else if (npcNames.SelectedItem != null)
-                    {
-                        npcNames.Items.RemoveAt(npcNames.Items.IndexOf(npcNames.SelectedItem));
-                    }
-                    break;
-                case MessageBoxResult.Cancel:
-                    break;
+                MessageBoxResult result = MessageBox.Show("Deleting this NPC is irreversible. Do you wish to continue?", "Confirm NPC Removal.", MessageBoxButton.OKCancel);
+                switch (result)
+                {
+                    case MessageBoxResult.OK:
+                        if (npcNames.Items.Count == 1)
+                        {
+                            npcNames.Items.Clear();
+                        }
+                        else if (npcNames.SelectedItem != null)
+                        {
+                            npcNames.Items.RemoveAt(npcNames.Items.IndexOf(npcNames.SelectedItem));
+                        }
+                        break;
+                    case MessageBoxResult.Cancel:
+                        break;
+                }
             }
 
             
