@@ -24,7 +24,7 @@ namespace NPCManager
         /// Every NPC needs a name, some stats, a profession and a description.
         /// </summary>
         string name;
-        int[] stats;
+        int[] stats = new int[6];
         string profession;
         string description;
 
@@ -34,7 +34,7 @@ namespace NPCManager
             Random rnd = new Random();
             for (int i=0; i<6; i++)
             {
-                stats[i]=rnd.Next(1, 6)+ rnd.Next(1, 6)+ rnd.Next(1, 6);
+                this.stats[i]=rnd.Next(1, 6)+ rnd.Next(1, 6)+ rnd.Next(1, 6);
             }
         }
         
@@ -49,7 +49,8 @@ namespace NPCManager
 
         private void NPCAdd(object sender, RoutedEventArgs e)
         {
-            npcNames.Items.Add("Test Test");
+            NPC npc = new NPC("Deradalador");
+            npcNames.Items.Add(npc);
         }
 
         private void NPCDelete(object sender, RoutedEventArgs e)
