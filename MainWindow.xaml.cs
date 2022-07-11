@@ -27,6 +27,7 @@ namespace NPCManager
         int[] stats = new int[6];
         string profession;
         string description;
+        string race;
 
         public NPC(string n)
         {
@@ -38,7 +39,11 @@ namespace NPCManager
             }
         }
         public string GetName() => name;
-        
+        public int[] GetStats() => stats;
+        public string GetProfession() => profession;
+        public string GetDescription() => description;
+        public string GetRace() => race;
+
     }
 
     public partial class MainWindow : Window
@@ -47,10 +52,12 @@ namespace NPCManager
         {
             InitializeComponent();
         }
+        int i = 1;
 
         private void NPCAdd(object sender, RoutedEventArgs e)
         {
-            NPC npc = new NPC("Deradalador");
+            NPC npc = new NPC($"Deradalador {i}");
+            i++;
             npcNames.Items.Add(npc.GetName());
             npcNames.SelectedItem = npcNames.Items.GetItemAt(0);
             
@@ -60,11 +67,11 @@ namespace NPCManager
         {
             if (npcNames.Items.Count > 0)
             {
-                if (npcNames.SelectedItem != null)
+                if (npcNames.SelectedItem == null)
                 {
                     npcNames.SelectedItem = npcNames.Items.GetItemAt(0);
                 }
-                MessageBoxResult result = MessageBox.Show("Deleting this NPC is irreversible. Do you wish to continue?", "Confirm NPC Removal", MessageBoxButton.OKCancel);
+                MessageBoxResult result = MessageBox.Show($"Deleting NPC {npcNames.SelectedItem} is irreversible. Do you wish to continue?", "Confirm NPC Removal", MessageBoxButton.OKCancel);
                 switch (result)
                 {
                     case MessageBoxResult.OK:
@@ -83,6 +90,11 @@ namespace NPCManager
             }            
 
             
+        }
+
+        private void NPCEdit(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
