@@ -37,6 +37,7 @@ namespace NPCManager
                 this.stats[i]=rnd.Next(1, 6)+ rnd.Next(1, 6)+ rnd.Next(1, 6);
             }
         }
+        public string GetName() => name;
         
     }
 
@@ -50,30 +51,32 @@ namespace NPCManager
         private void NPCAdd(object sender, RoutedEventArgs e)
         {
             NPC npc = new NPC("Deradalador");
-            npcNames.Items.Add(npc);
+            npcNames.Items.Add(npc.GetName());
+            npcNames.SelectedItem = npcNames.Items.GetItemAt(0);
+            
         }
 
         private void NPCDelete(object sender, RoutedEventArgs e)
         {
-            if (npcNames.Items.Count > 0 && npcNames.SelectedItem != null)
+            if (npcNames.SelectedItem != null || (npcNames.Items.Count == 1 && npcNames.SelectedItem == null) )
             {
-                MessageBoxResult result = MessageBox.Show("Deleting this NPC is irreversible. Do you wish to continue?", "Confirm NPC Removal.", MessageBoxButton.OKCancel);
+                MessageBoxResult result = MessageBox.Show("Deleting this NPC is irreversible. Do you wish to continue?", "Confirm NPC Removal", MessageBoxButton.OKCancel);
                 switch (result)
                 {
                     case MessageBoxResult.OK:
-                        if (npcNames.Items.Count == 1)
-                        {
-                            npcNames.Items.Clear();
-                        }
-                        else if (npcNames.SelectedItem != null)
+                        if (npcNames.SelectedItem != null)
                         {
                             npcNames.Items.RemoveAt(npcNames.Items.IndexOf(npcNames.SelectedItem));
+                        }
+                        else if (npcNames.Items.Count == 1)
+                        {
+                            npcNames.Items.Clear();
                         }
                         break;
                     case MessageBoxResult.Cancel:
                         break;
                 }
-            }
+            }            
 
             
         }
