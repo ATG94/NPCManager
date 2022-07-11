@@ -43,6 +43,11 @@ namespace NPCManager
         public string GetProfession() => profession;
         public string GetDescription() => description;
         public string GetRace() => race;
+        public void setName(string n) => name = n;
+        public void setStats(int[] s) => stats = s;
+        public void setProfession(string p) => profession = p;
+        public void setDescription(string d) => description = d;
+        public void setRace(string r) => race = r;
 
     }
 
