@@ -61,7 +61,8 @@ namespace NPCManager
 
         private void NPCAdd(object sender, RoutedEventArgs e)
         {
-            NPC npc = new NPC($"Deradalador {i}");
+            string npcName = "Deradalador";
+            NPC npc = new NPC($"{npcName} {i}");
             i++;
             npcNames.Items.Add(npc.GetName());
             npcNames.SelectedItem = npcNames.Items.GetItemAt(0);
